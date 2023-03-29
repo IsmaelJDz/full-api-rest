@@ -1,7 +1,17 @@
 import express from 'express';
+import config from 'config';
+
+import connect from './utils/connect';
+import logger from './utils/logger';
+import routes from './routes';
+
+const port = config.get<number>('port');
 
 const app = express();
 
-app.listen(1337, () => {
-  console.log('Server is running on port 1337');
+app.listen(port, async () => {
+  logger.info(`Server is running on http://localhost/${port} port`);
+
+  await connect();
+  routes(app);
 });
