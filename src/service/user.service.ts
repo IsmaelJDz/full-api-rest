@@ -1,3 +1,4 @@
+import { FilterQuery } from 'mongoose';
 import { omit } from 'lodash';
 import UserModel, {
   UserDocument,
@@ -12,4 +13,8 @@ export async function createUser(input: UserInput) {
   } catch (e: any) {
     throw new Error(e);
   }
+}
+
+export async function findUser(query: FilterQuery<UserDocument>) {
+  return UserModel.findOne(query).lean();
 }
