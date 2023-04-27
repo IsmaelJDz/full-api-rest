@@ -60,6 +60,8 @@ export async function getProductHandler(
   req: Request<UpdateProductInput['params']>,
   res: Response
 ) {
+  console.log('getProductHandler 2');
+
   const productId = req.params.productId;
   const product = await findProduct({ productId });
 

@@ -6,6 +6,7 @@ const requireUser = (
   next: NextFunction
 ) => {
   const user = res.locals.user;
+  console.log('getProductHandler 1');
 
   if (!user) {
     return res.sendStatus(403);
